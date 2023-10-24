@@ -1,13 +1,310 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #202142;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.card {
+  width: 40%;
+  height: 60px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.card.cardsort {
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background-color: #574e7a;
+  border-radius: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+input {
+  height: 4rem;
+  border: 3px solid #14abe7;
+  width: 70%;
+  font-size: 2rem;
+}
+
+.taskcount {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.mainbutton {
+  background-color: limegreen;
+  border: 3px solid #000;
+  padding: 0.7rem 4rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.btn {
+  border: 0;
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-done {
+  background-color: lightskyblue;
+  margin-right: 1rem;
+}
+
+.todoh3 {
+  text-decoration: line-through;
+  text-decoration-color: red;
+  text-decoration-thickness: 15%;
+}
+
+.btn-deleted {
+  background-color: #c63333;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .card {
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .card {
+    width: 70%;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .card {
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .card {
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  input {
+    height: 3.5rem;
+    border: 3px solid #14abe7;
+    width: 70%;
+    font-size: 2rem;
+  }
+  .taskcount {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .mainbutton {
+    background-color: limegreen;
+    border: 3px solid #000;
+    padding: 0.4rem 3rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .btn {
+    border: 0;
+    padding: 0.3rem 1.2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .card.cardsort {
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #574e7a;
+    border-radius: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .card {
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  input {
+    height: 3rem;
+    border: 3px solid #14abe7;
+    width: 60%;
+    font-size: 1.5rem;
+  }
+  .taskcount {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .mainbutton {
+    background-color: limegreen;
+    border: 3px solid #000;
+    padding: 0.4rem 3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .btn {
+    border: 0;
+    padding: 0.3rem 1.2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .card.cardsort {
+    padding: 0.7rem 1.2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #574e7a;
+    border-radius: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .card {
+    width: 80%;
+    height: 80px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  input {
+    height: 3rem;
+    border: 3px solid #14abe7;
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0.5rem 1rem;
+  }
+  .taskcount {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .mainbutton {
+    background-color: limegreen;
+    border: 3px solid #000;
+    padding: 0.4rem 3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .btn {
+    border: 0;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .card.cardsort {
+    padding: 0.5rem 0.6rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #574e7a;
+    border-radius: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: 0.6rem;
+  }
 }
