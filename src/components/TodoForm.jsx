@@ -6,7 +6,13 @@ import TodoContext from "../Context/TodoContext";
 import { useContext } from "react";
 
 function TodoForm() {
-  const { toBeDoneWork: unDoneWork } = useContext(TodoContext);
+  const {
+    toBeDoneWork: unDoneWork,
+    editText,
+    beenEdited,
+    updateWork,
+  } = useContext(TodoContext);
+
   const [text, setText] = useState("");
 
   const textHandler = (e) => {
@@ -25,16 +31,35 @@ function TodoForm() {
     setText("");
   };
 
+  if (editText === true && text === "") {
+    return setText(beenEdited.textTodo);
+    // console.log(beenEdited.id);
+  }
+
+  const updateFormHandler = (e) => {
+    e.preventDefault();
+
+    const updateObj = {
+      id: beenEdited.id,
+      textTodo: text,
+    };
+
+    updateObj.textTodo.trim() !== "" && updateWork(updateObj);
+
+    // console.log(updateObj);
+    setText("");
+  };
+
   return (
     <Card addin={false}>
-      <form onSubmit={sendFormHandler}>
+      <form onSubmit={editText ? updateFormHandler : sendFormHandler}>
         <input
           onChange={textHandler}
           type="text"
           value={text}
           placeholder="Enter your Todo"
         />
-        <MainButton type="submit">Send</MainButton>
+        <MainButton type="submit">{editText ? "Update" : "Send"}</MainButton>
       </form>
     </Card>
   );
