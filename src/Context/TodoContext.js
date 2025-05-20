@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { useState } from "react";
 
 // create context
@@ -6,18 +6,28 @@ const TodoContext = createContext();
 
 // create provider
 export const TodoProvider = ({ children }) => {
-  const [listed, setListed] = useState([]);
+  const fetchedList = localStorage.getItem("todolistLocal");
+  const currentList = fetchedList ? JSON.parse(fetchedList) : [];
+
+  const [listed, setListed] = useState(currentList);
   const [editText, setEditText] = useState(false);
   const [beenEdited, setBeenEdited] = useState();
+  const [crossed, setCrossed] = useState();
+
+  useEffect(() => {
+    localStorage.setItem("todolistLocal", JSON.stringify(listed));
+    // console.log(listed);
+  }, [listed]);
 
   const toBeDoneWork = (addToList) => {
     setListed([addToList, ...listed]);
+    console.log(listed);
   };
 
   const todoDeletedHandler = (toDelete) => {
-    if (window.confirm("Are you sure?")) {
-      setListed(listed.filter((item) => item.id !== toDelete));
-    }
+    // if (window.confirm("Are you sure?")) {
+    setListed(listed.filter((item) => item.id !== toDelete));
+    // }
   };
 
   const editHandler = (toedit) => {
@@ -27,11 +37,28 @@ export const TodoProvider = ({ children }) => {
     // console.log(beenEdited);
   };
 
+  const todoCrossHandler = (toupdate) => {
+    // e.preventDefault();
+    setCrossed(!crossed);
+
+    const updateObj = {
+      id: toupdate.id,
+      textTodo: toupdate.textTodo,
+      completed: !toupdate.completed,
+    };
+
+    updateObj.completed !== toupdate.completed && updateWork(updateObj);
+  };
+
   const updateWork = (toupdate) => {
     setListed(
       listed.map((item) =>
         item.id === toupdate.id
-          ? { ...item, textTodo: toupdate.textTodo }
+          ? {
+              ...item,
+              textTodo: toupdate.textTodo,
+              completed: toupdate.completed,
+            }
           : item
       )
     );
@@ -48,6 +75,7 @@ export const TodoProvider = ({ children }) => {
         editText,
         beenEdited,
         updateWork,
+        todoCrossHandler,
       }}
     >
       {children}

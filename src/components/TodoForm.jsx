@@ -25,6 +25,7 @@ function TodoForm() {
     const myObj = {
       id: v4(),
       textTodo: text,
+      completed: Boolean(false),
     };
 
     myObj.textTodo.trim() !== "" && unDoneWork(myObj);
@@ -42,6 +43,7 @@ function TodoForm() {
     const updateObj = {
       id: beenEdited.id,
       textTodo: text,
+      completed: Boolean(false),
     };
 
     updateObj.textTodo.trim() !== "" && updateWork(updateObj);
